@@ -54,6 +54,18 @@ app.get('/health', (req, res) => {
     status: 'OK',
     timestamp: new Date().toISOString(),
     environment: config.nodeEnv,
+    uptime: process.uptime(),
+    version: '1.0.0',
+  });
+});
+
+app.get('/api/health', (req, res) => {
+  res.status(200).json({
+    status: 'OK',
+    timestamp: new Date().toISOString(),
+    environment: config.nodeEnv,
+    uptime: process.uptime(),
+    version: '1.0.0',
   });
 });
 

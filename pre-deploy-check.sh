@@ -9,10 +9,12 @@ echo "🔍 Verificando ambiente para deploy no Render..."
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
+BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Contador de erros
 ERRORS=0
+WARNINGS=0
 
 # 1. Verificar se estamos no diretório correto
 if [ ! -f "package.json" ]; then
@@ -44,6 +46,22 @@ if [ $? -ne 0 ]; then
     ERRORS=$((ERRORS+1))
 else
     echo -e "${GREEN}✅ Build TypeScript passou${NC}"
+    
+    # Verificar se a pasta dist foi criada
+    if [ -d "dist" ]; then
+        echo -e "${GREEN}✅ Pasta dist criada com sucesso${NC}"
+        
+        # Verificar se server.js existe
+        if [ -f "dist/server.js" ]; then
+            echo -e "${GREEN}✅ dist/server.js encontrado${NC}"
+        else
+            echo -e "${RED}❌ dist/server.js não encontrado${NC}"
+            ERRORS=$((ERRORS+1))
+        fi
+    else
+        echo -e "${RED}❌ Pasta dist não foi criada${NC}"
+        ERRORS=$((ERRORS+1))
+    fi
 fi
 
 # 4. Verificar se .env existe (para desenvolvimento local)
