@@ -1,0 +1,101 @@
+services:
+  # Backend API Service
+  - type: web
+    name: pneus-store-backend
+    env: node
+    region: oregon # Escolha a região mais próxima
+    plan: free # Mude para 'starter' ou superior em produção
+    branch: master # ou main, dependendo do seu repositório
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    healthCheckPath: /api/health
+    
+    # Variáveis de ambiente
+    envVars:
+      - key: NODE_ENV
+        value: production
+      
+      - key: PORT
+        value: 10000 # Porta padrão do Render
+      
+      - key: API_BASE_URL
+        sync: false # Será gerado automaticamente pelo Render
+      
+      - key: FRONTEND_URL
+        value: https://seu-site.netlify.app # Atualize com sua URL do Netlify
+      
+      - key: MONGODB_URI
+        sync: false # Configure manualmente no dashboard (contém senha)
+      
+      - key: JWT_SECRET
+        generateValue: true # Gera um valor aleatório seguro
+      
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      
+      - key: EMAIL_SERVICE
+        value: gmail
+      
+      - key: EMAIL_USER
+        sync: false # Configure manualmente
+      
+      - key: EMAIL_PASS
+        sync: false # Configure manualmente (use App Password)
+      
+      - key: MERCADO_PAGO_ACCESS_TOKEN
+        sync: false # Configure manualmente
+      
+      - key: MERCADO_PAGO_PUBLIC_KEY
+        sync: false # Configure manualmente
+      
+      - key: MERCADO_PAGO_WEBHOOK_SECRET
+        sync: false # Configure manualmente
+      
+      - key: STRIPE_SECRET_KEY
+        sync: false # Opcional
+      
+      - key: STRIPE_PUBLISHABLE_KEY
+        sync: false # Opcional
+      
+      - key: PAGSEGURO_EMAIL
+        sync: false # Opcional
+      
+      - key: PAGSEGURO_TOKEN
+        sync: false # Opcional
+      
+      - key: MAX_FILE_SIZE
+        value: 5242880
+      
+      - key: UPLOAD_DIR
+        value: /tmp/uploads # Render usa sistema de arquivos efêmero
+      
+      - key: RATE_LIMIT_WINDOW_MS
+        value: 900000
+      
+      - key: RATE_LIMIT_MAX
+        value: 100
+      
+      - key: CORS_ORIGIN
+        value: https://seu-site.netlify.app # Atualize com sua URL do Netlify
+      
+      - key: BCRYPT_ROUNDS
+        value: 12
+      
+      - key: LOG_LEVEL
+        value: info
+      
+      - key: ENABLE_SEED_DATA
+        value: false
+      
+      - key: MOCK_PAYMENTS
+        value: false
+    
+    # Disco persistente para uploads (opcional, mas recomendado)
+    # Nota: Free tier não inclui disco persistente
+    # disks:
+    #   - name: uploads
+    #     mountPath: /tmp/uploads
+    #     sizeGB: 1
+    
+    # Auto-deploy quando houver push
+    autoDeploy: true

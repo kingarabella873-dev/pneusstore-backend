@@ -115,3 +115,20 @@ Thumbs.db
 # Uploads directory (optional - remove if you want to track uploaded files)
 uploads/*
 !uploads/.gitkeep
+
+# Render specific
+.render
+*.pem
+.vercel
+
+# Build output
+dist/
+build/
+
+# Environment files (keep only .env.example)
+.env
+.env.local
+.env.development
+.env.test
+.env.production
+.env.*.local

@@ -2,21 +2,62 @@
 
 Backend Node.js para a loja de pneus, construído com Express, TypeScript, MongoDB e integração com sistemas de pagamento.
 
+## 🚀 Quick Start
+
+### Desenvolvimento Local
+
+```bash
+# Instalar dependências
+npm install
+
+# Configurar variáveis de ambiente
+cp .env.example .env
+# Edite o .env com suas configurações
+
+# Iniciar em modo desenvolvimento
+npm run dev
+
+# Build para produção
+npm run build
+
+# Iniciar em produção
+npm start
+```
+
+### Deploy no Render
+
+```bash
+# 1. Verificar se está pronto para deploy
+./pre-deploy-check.sh
+
+# 2. Commit e push
+git add .
+git commit -m "Deploy backend"
+git push origin master
+
+# 3. Seguir guia completo em RENDER_DEPLOY.md
+```
+
+📚 **[Ver Guia Completo de Deploy →](RENDER_DEPLOY.md)**
+
+## 🗄️ Banco de Dados
+
+**MongoDB Atlas** já configurado:
+```
+mongodb+srv://kingarabella873_db_user:***@pneu-store.og6vpor.mongodb.net/
+```
+
 ## 🚀 Tecnologias Utilizadas
 
-- **Node.js** - Runtime JavaScript
-- **Express.js** - Framework web
+- **Node.js** + **Express.js** - Backend framework
 - **TypeScript** - Linguagem tipada
-- **MongoDB** - Banco de dados NoSQL
-- **Mongoose** - ODM para MongoDB
+- **MongoDB** + **Mongoose** - Banco de dados
 - **JWT** - Autenticação
-- **Stripe** - Pagamentos com cartão
-- **PIX** - Pagamentos PIX
+- **Mercado Pago** - Pagamentos PIX
 - **Multer** - Upload de arquivos
 - **Nodemailer** - Envio de emails
 - **Winston** - Logs
 - **Helmet** - Segurança
-- **CORS** - Cross-Origin Resource Sharing
 
 ## 📁 Estrutura do Projeto
 
