@@ -6,7 +6,7 @@ export interface IProduct extends Document {
   brand: string;
   modelName: string;
   size: string; // Ex: "195/55R16"
-  category: 'carro' | 'moto' | 'caminhao' | 'van' | 'trator' | 'ort';
+  category: 'Carros' | 'Vans e Utilitários' | 'Caminhões e Ônibus' | 'Motos' | 'Tratores' | 'Equipamentos';
   price: number;
   originalPrice?: number;
   discount?: number;
@@ -63,7 +63,7 @@ const productSchema = new Schema<IProduct>({
   category: {
     type: String,
     required: [true, 'Categoria é obrigatória'],
-    enum: ['carro', 'moto', 'caminhao', 'van', 'trator', 'ort'],
+    enum: ['Carros', 'Vans e Utilitários', 'Caminhões e Ônibus', 'Motos', 'Tratores', 'Equipamentos'],
   },
   price: {
     type: Number,
