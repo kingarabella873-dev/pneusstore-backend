@@ -7,7 +7,7 @@ async function testarPix() {
   console.log('=== TESTE PIX CORRIGIDO ===\n');
   
   // Gerar PIX
-  const cmd = `curl -s -X POST http://localhost:5001/api/payments/pix/create -H "Content-Type: application/json" -d '{"amount":100,"orderId":"TESTE-FINAL","customerName":"Cliente Teste","customerEmail":"cliente@teste.com","customerPhone":"11999999999","shippingAddress":{"street":"Rua Teste","number":"123","city":"São Paulo","state":"SP","zipCode":"01000-000"}}'`;
+  const cmd = `curl -s -X POST https://pneusstore-backend.onrender.com/api/payments/pix/create -H "Content-Type: application/json" -d '{"amount":100,"orderId":"TESTE-FINAL","customerName":"Cliente Teste","customerEmail":"cliente@teste.com","customerPhone":"11999999999","shippingAddress":{"street":"Rua Teste","number":"123","city":"São Paulo","state":"SP","zipCode":"01000-000"}}'`;
   
   const { stdout } = await execPromise(cmd);
   const response = JSON.parse(stdout);
