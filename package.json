@@ -6,9 +6,11 @@
   "scripts": {
     "dev": "nodemon --exec ts-node --transpile-only src/server.ts",
     "dev-fast": "nodemon --transpile-only src/server.ts",
-    "build": "tsc",
+    "build": "rm -rf dist && tsc",
     "start": "node dist/server.js",
+    "start:prod": "NODE_ENV=production node dist/server.js",
     "start:dev": "ts-node src/server.ts",
+    "postbuild": "ls -la dist",
     "test": "jest",
     "test:watch": "jest --watch",
     "create-admin": "ts-node src/scripts/createAdmin.ts",
